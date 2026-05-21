@@ -1,0 +1,13 @@
+{
+  "name": "ai-calendar",
+  "private": true,
+  "workspaces": [
+    "api",
+    "mobile"
+  ],
+  "scripts": {
+    "api": "npm run dev -w api",
+    "mobile": "npm run start -w mobile",
+    "dev": "npm run api & npm run mobile"
+  }
+}
