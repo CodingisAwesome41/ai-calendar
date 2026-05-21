@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { z } from "zod";
-import { completeJson } from "../lib/anthropic.js";
+import { completeJson } from "../lib/ai.js";
 
 const parseEventSchema = z.object({
   text: z.string().min(1),

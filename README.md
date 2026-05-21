@@ -1,19 +1,19 @@
 # AI Calendar
 
-Cross-platform mobile calendar with Anthropic AI: natural language event creation, smart scheduling, and day/week summaries. Syncs with device calendars (Apple/iCloud on iOS) and Google Calendar.
+Cross-platform mobile calendar with AI (OpenAI or Anthropic): natural language event creation, smart scheduling, and day/week summaries. Syncs with device calendars (Apple/iCloud on iOS) and Google Calendar.
 
 ## Project structure
 
 ```
 ai-calendar/
-  api/       # Hono + Anthropic + Google Calendar API
+  api/       # Hono + OpenAI/Anthropic + Google Calendar API
   mobile/    # Expo React Native app
 ```
 
 ## Prerequisites
 
 - Node.js 20+
-- [Anthropic API key](https://console.anthropic.com/)
+- [OpenAI API key](https://platform.openai.com/api-keys) **or** [Anthropic API key](https://console.anthropic.com/)
 - Google Cloud project with Calendar API + OAuth clients (Web, iOS, Android)
 - Expo Go or EAS dev client for mobile testing
 - iOS Simulator or device for calendar permission testing
@@ -37,7 +37,7 @@ sudo chown -R $(whoami) ~/.npm
 
 ```bash
 cp api/.env.example api/.env
-# Edit api/.env — set ANTHROPIC_API_KEY and Google OAuth vars
+# Edit api/.env — set OPENAI_API_KEY (or ANTHROPIC_API_KEY) and Google OAuth vars
 ```
 
 ### 3. Start API
@@ -89,7 +89,7 @@ Press `i` for iOS simulator or scan QR with Expo Go.
 
 ## Privacy
 
-- Event metadata is sent to **Anthropic** for AI features.
+- Event metadata is sent to your configured **AI provider** (OpenAI or Anthropic) for AI features.
 - **Google** refresh tokens are encrypted on the API server (`TOKEN_ENCRYPTION_KEY`).
 - **Apple/iCloud** calendars are accessed on-device only via iOS permissions — no server-side Apple API.
 
@@ -116,7 +116,7 @@ Deploy `api/` to Vercel, Railway, or Fly.io. Set env vars and update:
 
 | Issue | Fix |
 |-------|-----|
-| AI parse fails | Check `ANTHROPIC_API_KEY` in `api/.env` |
+| AI parse fails | Check `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` in `api/.env` |
 | Mobile can't reach API | Use LAN IP, not `localhost`, on physical device |
 | No device events | Grant calendar permission in iOS Settings |
 | Google not connecting | Verify OAuth client IDs and redirect URI |

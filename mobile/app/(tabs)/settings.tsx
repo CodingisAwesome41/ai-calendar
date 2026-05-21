@@ -104,8 +104,8 @@ export default function SettingsScreen() {
       <View style={[styles.card, { backgroundColor: colors.card }]}>
         <Text style={[styles.cardTitle, { color: colors.text }]}>Privacy</Text>
         <Text style={[styles.privacy, { color: colors.muted }]}>
-          Event titles, times, and locations are sent to Anthropic for AI parsing,
-          scheduling suggestions, and summaries. Google tokens are stored encrypted
+          Event titles, times, and locations are sent to your AI provider (OpenAI or
+          Anthropic) for parsing, scheduling suggestions, and summaries. Google tokens are stored encrypted
           on the API server. Apple/iCloud calendars are accessed on-device only via
           system permissions.
         </Text>
